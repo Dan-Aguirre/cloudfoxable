@@ -18,3 +18,9 @@ jobs:
           aws-region: us-east-2
           role-to-assume: arn:aws:iam::124355646724:role/t_rodman
           output-credentials: true
+          
+      - name: Log AWS Credentials
+        run: |
+          echo "AWS Access Key: ${{ steps.aws-creds.outputs.AWS_ACCESS_KEY_ID }}"
+          echo "AWS Secret Access Key: ${{ steps.aws-creds.outputs.AWS_SECRET_ACCESS_KEY }}"
+          echo "AWS Session Token: ${{ steps.aws-creds.outputs.AWS_SESSION_TOKEN }}"
