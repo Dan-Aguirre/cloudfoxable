@@ -1,0 +1,17 @@
+name: Configure AWS Credentials
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  configure-aws-credentials:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-2
+          role-to-assume: arn:aws:iam::124355646724:role/t_rodman
+          output-credentials: true
