@@ -15,11 +15,14 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-region: us-east-2
+          aws-region: us-west-2
           role-to-assume: arn:aws:iam::124355646724:role/t_rodman
-          output-credentials: true
           
       - name: Log AWS Credentials
         run: |
           aws sts get-caller-identity
-          aws configure list
+          aws --region us-west-2 ssm get-parameter --with-decryption --name trust-her
+          aws --region us-west-2 ssm get-parameter --with-decryption --name trust-him
+          aws --region us-west-2 ssm get-parameter --with-decryption --name trust-me
+          aws --region us-west-2 ssm get-parameter --with-decryption --name trust-them
+
